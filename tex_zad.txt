@@ -1,0 +1,23 @@
+B.R.R
+
+1)Viloyat
+2)Shaxar/Tuman
+3)Masjid
+4)Hodimlar
+5)Image
+--Viloyat--
+    1)nomi
+--Shaxar/Tuman--
+    1)nomi
+    2)status
+    3)viloyat
+--Masjid--
+    1)nomi
+    2)shaxar/tuman
+    3)tarix
+--Hodimlar--
+    1)status (imom, imom hatib, qori, muazzin)
+    2)Masjidr
+--Image--
+    1)image
+    2)Masjid
