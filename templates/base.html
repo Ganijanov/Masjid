@@ -1,65 +1,68 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
-<title>About as masjids</title>
-<link href="{% static 'css/uncss.css' %} " rel="stylesheet">
-<!--[if lt IE 9]>
-<script src="images/spinner.gif" data-src="js/html5shiv.js"></script>
-<script src="images/spinner.gif" data-src="js/respond.min.js"></script>
-<![endif]-->
-<link rel="shortcut icon" href="{% static 'favicon.ico' %}">
-</head>
-<body data-spy="scroll" data-target="#navbar" data-offset="0">
-<header id="header" role="banner">
-<div class="container">
-<div id="navbar" class="navbar navbar-default">
-<div class="navbar-header">
-<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-<span class="sr-only">Toggle navigation</span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</button>
-<a class="navbar-brand" href="#"></a>
-</div>
-<div class="collapse navbar-collapse">
-<ul class="nav navbar-nav">
-<li class="active"><a href="#main-slider"><i class="icon-home"></i></a></li>
-<li><a href="#services">Masjid</a></li>
-<li><a href="#portfolio">Jum'ma</a></li>
-<li><a href="#pricing">Salat</a></li>
-<li><a href="#about-us">Events</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</div>
-</div>
-</div>
-</header>
-{% block content %}
-{% endblock  %}
-<footer id="footer">
-<div class="container">
-<div class="row">
-<div class="col-sm-6">
-&copy; 2014 <a target="_blank" href="https://freeislamictemplates.appspot.com/" title="Free Islamic Templates">Free Islamic Templates</a>. All Rights Reserved.
-</div>
-<div class="col-sm-6">
-</div>
-</div>
-</div>
-</footer>
-<script src="{% static 'js/jquery.js' %}"></script>
+  <head>
+    <title>UzMasjid</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+
+    
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+      </head>
+      <body>
+
+        <div id="colorlib-page">
+          <aside id="colorlib-aside" role="complementary" class="js-fullheight">
+                      
+                 <div class="sidebar-box ftco-animate">
+                  <h3 class="sidebar-heading">Masjidlar soni</h3>
+                  <ul class="categories">
+                    {%for key, value in ctsDic.items %}
+                    <li><a href="{% url 'viloyat_detail_url' key.id%}">{{key}} <span>({{value}})</span></a></li>
+                    {% endfor %}
+                  </ul>
+                </div> 
+                
+                
+          </aside> <!-- END COLORLIB-ASIDE -->
+          {% block content %}
+          {% endblock  %}
+                 
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
-<script src="{% static 'js/jquery.isotope.min.js' %}"></script>
-<script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/aos.js' %}"></script>
+<script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+<script src="{% static 'js/scrollax.min.js' %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="{% static 'js/google-map.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="{% static 'js/jquery.unveil.js' %}"></script>
-<script>$(document).ready(function(){$("img").unveil()});</script>
+  
 </body>
 </html>

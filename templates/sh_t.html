@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div id="colorlib-main">
+	<section class="ftco-section">
+		<div class="container">
+			{% for sh_t_masjid in sh_t_masjids %}
+			<div class="row px-md-4">
+				<div class="col-md-12">
+					<div class="blog-entry ftco-animate d-md-flex">
+						<a href="{% url 'masjid_url' sh_t_masjid.id %}" class="img img-2" style="background-image: url({{sh_t_masjid.images.first.image.url}});"></a>
+						<div class="text text-2 pl-md-4">
+			<h3 class="mb-2"><a href="{% url 'masjid_url' sh_t_masjid.id %}">{{sh_t_masjid.name}}</a></h3>
+			<div class="meta-wrap">
+								<p class="meta">
+					<span><i ></i>{{sh_t_masjid.sh_t}}  {{sh_t_masjid.sh_t.status}}</span>
+					<span><a href="{% url 'viloyat_detail_url' sh_t_masjid.sh_t.viloyat.id %}">{{sh_t_masjid.sh_t.viloyat}}</a></span>
+				</p>
+			</div>
+			<p class="mb-4">{{sh_t_masjid.about}}</p>
+			<p><a href="{% url 'masjid_url' sh_t_masjid.id %}" class="btn-custom">Batafsil<span class="ion-ios-arrow-forward"></span></a></p>
+			</div>
+					</div>
+				</div>
+			</div>       
+		{% endfor %}
+	</div>
+	</section>
+</div>
+{% endblock %}

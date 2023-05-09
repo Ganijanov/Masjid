@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<div id="colorlib-main">
+		<section class="ftco-section ftco-no-pt ftco-no-pb">
+		<div class="container">
+			<div class="row d-flex">   
+	 			<div class="col-xl-8 px-md-5 py-5">
+					<div class="row pt-md-4">
+						<div class="col-md-12">
+							<div class="blog-entry-2 ftco-animate">
+								<a href="{% url 'masjid_url' masjid.id %}" class="img" style="background-image: url({{masjid.images.first.image.url}});margin"></a>
+								<div class="text pt-4">
+						<h3 class="mb-4"><a href="#">{{masjid.name}}</a></h3>
+						<p class="mb-4">{{masjid.about}}</p>
+							{% for hodim in hodimlar %}
+							{% if hodim.masjid == masjid %}
+						<div class="author mb-4 d-flex align-items-center">
+								<a href="#" class="img" style="background-image: url({{hodim.photos.first.image.url}});"></a>
+								<div class="ml-3 info">
+									<span>{{hodim.status}}</span>
+									<h3><a href="{% url 'about_url' hodim.id %}">{{hodim.f_name}}, {{hodim.l_name}}</a></h3>
+									
+								</div>
+							</div>
+							{% endif %}
+							{% endfor %}
+						</div>
+						</div>
+						</div>
+						</div>
+					</div><!-- END-->
+
+{% endblock %}

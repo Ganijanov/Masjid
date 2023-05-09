@@ -9,11 +9,11 @@ class Viloyat(models.Model):
 
 class ShaharTuman(models.Model):
     STATUS = {
-        'sh':'Shaxar',
-        't':'Shaxar'
+        ('Shaxar','Shaxar'),
+        ('Tuman','Tuman')
     }
     name = models.CharField(max_length=255, null=False, blank=False)
-    status = models.CharField(STATUS, null=False, blank=False )
+    status = models.CharField(choices=STATUS, null=False, blank=False, max_length=255 )
     viloyat = models.ForeignKey(Viloyat, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
@@ -30,16 +30,30 @@ class Masjid(models.Model):
     
 class Hodim(models.Model):
     STATUS = {
-        1:'Imom',
-        2:'Imom hatib',
-        3:'Qori',
-        4:'Muazzin'
+        ('Imom','Imom'),
+        ('Imom hatib','Imom hatib'),
+        ('Qori','Qori'),
+        ('Muazzin','Muazzin')
     }
     f_name = models.CharField(max_length=255)
     l_name = models.CharField(max_length=255)
-    status = models.IntegerField(choices=STATUS)
-    masjid = models.ForeignKey(Masjid, on_delete=models.CASCADE)
+    about = models.TextField(default="Malumot yoq")
+    status = models.CharField(choices=STATUS, max_length=255)
+    masjid = models.ForeignKey(Masjid, on_delete=models.CASCADE, related_name='masjidi')
+
+    def __str__(self):
+        return self.f_name
 
 class Image(models.Model):
     image = models.ImageField(upload_to='masjid/')
-    masjid = models.ForeignKey(Masjid, on_delete=models.CASCADE)
+    masjid = models.ForeignKey(Masjid, on_delete=models.CASCADE, related_name='images')
+    
+    def __str__(self):
+        return self.masjid.name
+
+class HodimImage(models.Model):
+    image = models.ImageField(upload_to='hodim/')
+    hodim = models.ForeignKey(Hodim, on_delete=models.CASCADE, related_name='photos')
+
+    def __str__(self) -> str:
+        return self.hodim.f_name

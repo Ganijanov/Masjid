@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div id="colorlib-main">
+	<section class="ftco-section">
+		<div class="container">
+			{% for viloyat_masjid in viloyat_masjids %}
+			<div class="row px-md-4">
+				<div class="col-md-12">
+					<div class="blog-entry ftco-animate d-md-flex">
+						<a href="{% url 'masjid_url' viloyat_masjid.id %}" class="img img-2" style="background-image: url({{viloyat_masjid.images.first.image.url}});"></a>
+						<div class="text text-2 pl-md-4">
+			<h3 class="mb-2"><a href="{% url 'masjid_url' viloyat_masjid.id %}">{{viloyat_masjid.name}}</a></h3>
+			<div class="meta-wrap">
+								<p class="meta">
+					<span><i ></i>{{viloyat_masjid.sh_t.viloyat}}</span>
+					<span><a href="{% url 'sh_t_url' viloyat_masjid.sh_t.id %}">{{viloyat_masjid.sh_t}}  {{viloyat_masjid.sh_t.status}}</a></span>
+				</p>
+			</div>
+			<p class="mb-4">{{viloyat_masjid.about}}</p>
+			<p><a href="{% url 'masjid_url' viloyat_masjid.id %}" class="btn-custom">Batafsil<span class="ion-ios-arrow-forward"></span></a></p>
+			</div>
+					</div>
+				</div>
+			</div>       
+		{% endfor %}
+	</div>
+	</section>
+</div>
+{% endblock %}
