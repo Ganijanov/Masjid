@@ -11,7 +11,7 @@
 							<div class="blog-entry-2 ftco-animate">
 								<a href="{% url 'masjid_url' masjid.id %}" class="img" style="background-image: url({{masjid.images.first.image.url}});margin"></a>
 								<div class="text pt-4">
-						<h3 class="mb-4"><a href="#">{{masjid.name}}</a></h3>
+						<h3 class="mb-4"><a href="{% url 'masjid_url' masjid.id %}">{{masjid.name}}</a></h3>
 						<p class="mb-4">{{masjid.about}}</p>
 							{% for hodim in hodimlar %}
 							{% if hodim.masjid == masjid %}

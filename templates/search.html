@@ -11,17 +11,17 @@
 					<div class="row pt-md-4">
 			    			<div class="col-md-12">
 								<div class="blog-entry ftco-animate d-md-flex">
-									<a href="{% url 'masjid_url' masjid.id %}" class="img img-2" style="background-image: url({{masjid.images.first.image.url}});"></a>
+									<a href="single.html" class="img img-2" style="background-image: url({{masjid.images.first.image.url}});"></a>
 									<div class="text text-2 pl-md-4">
 				              <h3 class="mb-2"><a href="{% url 'masjid_url' masjid.id %}">{{masjid.name}}</a></h3>
 				              <div class="meta-wrap">
 												<p class="meta">
 				              		<span><i ></i>{{masjid.sh_t}} {{masjid.sh_t.status}}</span>
-				              		<span><a href="{% url 'viloyat_detail_url' masjid.sh_t.viloyat.id %}"><i ></i>{{masjid.sh_t.viloyat}}</a></span>
+				              		{% comment %} <span><a href="{% url 'viloyat_detail_url' masjid.sh_t.viloyat.id %}"><i ></i>{{masjid.sh_t.viloyat}}</a></span> {% endcomment %}
 				              	</p>
 			              	</div>
 				              <p class="mb-4"> {{masjid.about}}</p>
-				              <p><a href="{% url 'masjid_url' masjid.id %}" class="btn-custom">Batafsil <span class="ion-ios-arrow-forward"></span></a></p>
+				              <p><a href="#" class="btn-custom">Batafsil <span class="ion-ios-arrow-forward"></span></a></p>
 				            </div>
 									</div>
 								</div>

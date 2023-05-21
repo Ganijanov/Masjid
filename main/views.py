@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from . import models
+from itertools import chain
+import operator
 viloyatlar = models.Viloyat.objects.all().order_by('name')
 def count_masjids(request):
     ctsDic = {}
@@ -9,6 +11,7 @@ def count_masjids(request):
         ctsDic[cts] = ctsQnt
         
     return ctsDic
+
 def masjid(request, id):
     masjid = models.Masjid.objects.get(id=id)
     context = {
@@ -37,7 +40,6 @@ def about(request, id):
     }
     return render(request, 'about.html', context)
 
-
 def sh_t_detail(request, id):
     sh_t = models.ShaharTuman.objects.get(id=id)
     context = {
@@ -47,6 +49,7 @@ def sh_t_detail(request, id):
         'ctsDic':count_masjids(request)
     }
     return render(request, 'sh_t.html', context)
+
 def viloyat_detail(request, id):
     viloyat = models.Viloyat.objects.get(id=id)
     context = {
@@ -56,3 +59,28 @@ def viloyat_detail(request, id):
         'ctsDic':count_masjids(request)
     }
     return render(request, 'viloyat.html', context  )
+
+def serchfilter(request):
+    s = request.GET.get('Ss')
+    if s is not None :
+        print(True)
+        search = sorted(
+            list(
+                chain(
+                    # models.Masjid.objects.filter(name__icontains=s),
+                    models.ShaharTuman.objects.filter(status__icontains=s, name__icontains=s)
+                )
+            ),
+            key=operator.attrgetter('id')
+        )
+        print(search)
+        context = {
+            'masjids':search,
+            'ctsDic':count_masjids(request),
+            'viloyatlar':viloyatlar,
+        }
+    else:
+        context = {
+            'ctsDic':count_masjids(request)
+        }
+    return render(request, 'search.html', context)
