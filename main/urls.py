@@ -5,6 +5,6 @@ urlpatterns = [
     path('about/<int:id>/', views.about, name='about_url'),
     path('sh_t/<int:id>/', views.sh_t_detail, name='sh_t_url'),
     path('viloyat_detail/<int:id>/', views.viloyat_detail, name='viloyat_detail_url'),
+    # path('', views.search, name='search_url'),
     path('', views.mp, name='mp_url'),
-    path('search/', views.serchfilter, name='search_url'),
-]
+    ]
